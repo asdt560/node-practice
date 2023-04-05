@@ -6,6 +6,9 @@ const port = 8080;
 
 const server = http.createServer((req, res) => {
   let filename = `.${req.url}`
+  if(filename === './') {
+    filename = './index.html'
+  }
   if (req.method.toLowerCase() === 'post') {
     const form = formidable({ multiples: true });
     form.parse(req, (err, fields, files) => {
